@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimaryDark">#5D5C4A</color>
+    <color name="colorPrimary">#878674</color>
+    <color name="colorPrimaryLight">#ACAB9C</color>
+    <color name="colorAccent">#BAA159</color>
+
+    <color name="hero_banner">#242424</color>
+
+    <color name="text_title_2">#ACAB9C</color>
+
+    <color name="progress_background">#848378</color>
+
+</resources>
