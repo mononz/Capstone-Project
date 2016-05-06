@@ -123,7 +123,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     @Override
     public void onResume() {
         super.onResume();
-        Paragon.sendScreen(getString(R.string.detail_) + mHeroID);
+        Paradex.sendScreen(getString(R.string.detail_) + mHeroID);
     }
 
     @Override
@@ -158,15 +158,15 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         switch (id) {
             case LOADER_HEROES_BASE:
-                return new CursorLoader(this, ContentUris.withAppendedId(Database.heroes.CONTENT_URI, mHeroID), null, null, null, null);
+                return new CursorLoader(this, ContentUris.withAppendedId(Database.hero.CONTENT_URI, mHeroID), null, null, null, null);
             case LOADER_HEROES_ABILITIES:
-                return new CursorLoader(this, Database.hero_abilities.CONTENT_URI, new String[]{Database.hero_abilities.FULL_ID, Database.hero_abilities.name, Database.hero_abilities.description, Database.hero_abilities.image, Database.ability_types.name},
-                        Database.hero_abilities.FULL_HEROES_ID + "=?", new String[]{Long.toString(mHeroID)}, null);
+                return new CursorLoader(this, Database.hero_ability.CONTENT_URI, new String[]{Database.hero_ability.FULL_ID, Database.hero_ability.name, Database.hero_ability.description, Database.hero_ability.image, Database.ability_type.name},
+                        Database.hero_ability.FULL_HEROES_ID + "=?", new String[]{Long.toString(mHeroID)}, null);
             case LOADER_HEROES_TRAITS:
-                return new CursorLoader(this, ContentUris.withAppendedId(Database.hero_traits.CONTENT_URI, mHeroID), null, null, null, null);
+                return new CursorLoader(this, ContentUris.withAppendedId(Database.hero_trait.CONTENT_URI, mHeroID), null, null, null, null);
             case LOADER_HEROES_AFFINITIES:
-                return new CursorLoader(this, Database.hero_affinities.CONTENT_URI, new String[]{Database.affinities.FULL_ID, Database.affinities.name, Database.affinities.image},
-                        Database.hero_affinities.FULL_HEROES_ID + "=?", new String[]{Long.toString(mHeroID)}, null);
+                return new CursorLoader(this, Database.hero_affinity.CONTENT_URI, new String[]{Database.affinity.FULL_ID, Database.affinity.name, Database.affinity.image},
+                        Database.hero_affinity.FULL_HEROES_ID + "=?", new String[]{Long.toString(mHeroID)}, null);
         }
         return null;
     }
@@ -178,17 +178,17 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
 
             case LOADER_HEROES_BASE:
                 if (data.moveToFirst()) {
-                    int idx_name = data.getColumnIndex(Database.heroes.name);
-                    int idx_tagline = data.getColumnIndex(Database.heroes.tagline);
-                    int idx_image = data.getColumnIndex(Database.heroes.image);
-                    int idx_type = data.getColumnIndex(Database.types.name);
-                    int idx_type_image = data.getColumnIndex(Database.types.image);
-                    int idx_role = data.getColumnIndex(Database.roles.name);
-                    int idx_attack = data.getColumnIndex(Database.attacks.name);
-                    int idx_scaling = data.getColumnIndex(Database.scalings.name);
+                    int idx_name = data.getColumnIndex(Database.hero.name);
+                    int idx_tagline = data.getColumnIndex(Database.hero.tagline);
+                    int idx_image = data.getColumnIndex(Database.hero.image);
+                    int idx_type = data.getColumnIndex(Database.type.name);
+                    int idx_type_image = data.getColumnIndex(Database.type.image);
+                    int idx_role = data.getColumnIndex(Database.role.name);
+                    int idx_attack = data.getColumnIndex(Database.attack.name);
+                    int idx_scaling = data.getColumnIndex(Database.scaling.name);
 
-                    int idx_external = data.getColumnIndex(Database.heroes.url);
-                    int idx_youtube = data.getColumnIndex(Database.heroes.video);
+                    int idx_external = data.getColumnIndex(Database.hero.url);
+                    int idx_youtube = data.getColumnIndex(Database.hero.video);
 
                     type_text.setText(data.getString(idx_type));
                     role_text.setText(data.getString(idx_role));
@@ -206,7 +206,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
 
                     if (hero_image != null) {
                         Glide.with(DetailActivity.this)
-                                .load(Uri.parse(Paragon.ASSET_PATH + data.getString(idx_image)))
+                                .load(Uri.parse(Paradex.ASSET_PATH + data.getString(idx_image)))
                                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                                 .crossFade()
                                 .centerCrop()
@@ -219,7 +219,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
 
                     requestBuilder
                             .diskCacheStrategy(DiskCacheStrategy.NONE)
-                            .load(Uri.parse(Paragon.ASSET_PATH + data.getString(idx_type_image)))
+                            .load(Uri.parse(Paradex.ASSET_PATH + data.getString(idx_type_image)))
                             .into(type_image);
                 }
                 break;
@@ -230,11 +230,11 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
 
             case LOADER_HEROES_TRAITS:
                 if (data.moveToFirst()) {
-                    int idx_attack = data.getColumnIndex(Database.hero_traits.attack);
-                    int idx_ability = data.getColumnIndex(Database.hero_traits.ability);
-                    int idx_durability = data.getColumnIndex(Database.hero_traits.durability);
-                    int idx_mobility = data.getColumnIndex(Database.hero_traits.mobility);
-                    int idx_difficulty = data.getColumnIndex(Database.hero_traits.difficulty);
+                    int idx_attack = data.getColumnIndex(Database.hero_trait.attack);
+                    int idx_ability = data.getColumnIndex(Database.hero_trait.ability);
+                    int idx_durability = data.getColumnIndex(Database.hero_trait.durability);
+                    int idx_mobility = data.getColumnIndex(Database.hero_trait.mobility);
+                    int idx_difficulty = data.getColumnIndex(Database.hero_trait.difficulty);
 
                     trait_1_progress.setProgress(data.getInt(idx_attack));
                     trait_2_progress.setProgress(data.getInt(idx_ability));

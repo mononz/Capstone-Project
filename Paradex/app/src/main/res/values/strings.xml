@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Paradex</string>
+
     <string name="content_authority" translatable="false">net.mononz.paragon</string>
+    <string name="sync_account_type" translatable="false">paragon.mononz.net</string>
 
     <string name="main">main</string>
     <string name="detail_">detail_</string>

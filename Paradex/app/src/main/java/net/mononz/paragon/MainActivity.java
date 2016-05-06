@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onResume() {
         super.onResume();
         getSupportLoaderManager().initLoader(CURSOR_LOADER_ID, null, MainActivity.this);
-        Paragon.sendScreen(getString(R.string.main));
+        Paradex.sendScreen(getString(R.string.main));
     }
 
     @Override
@@ -100,9 +100,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new CursorLoader(this, Database.heroes.CONTENT_URI,
-                new String[]{Database.heroes.FULL_ID, Database.heroes.name, Database.heroes.thumb, Database.types.name},
-                null, null, Database.heroes.sort + " ASC");
+        return new CursorLoader(this, Database.hero.CONTENT_URI,
+                new String[]{Database.hero.FULL_ID, Database.hero.name, Database.hero.thumb, Database.type.name},
+                null, null, Database.hero.sort + " ASC");
     }
 
     @Override

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-import net.mononz.paragon.Paragon;
+import net.mononz.paragon.Paradex;
 import net.mononz.paragon.R;
 import net.mononz.paragon.library.CursorRecAdapter;
 import net.mononz.paragon.database.Database;
@@ -35,10 +35,10 @@ public class AdapterHeroList extends CursorRecAdapter<AdapterHeroList.ShowViewHo
     @Override
     public void onBindViewHolder(final ShowViewHolder viewHolder, final Cursor cursor) {
 
-        int idx_id = cursor.getColumnIndex(Database.heroes._id);
-        int idx_name = cursor.getColumnIndex(Database.heroes.name);
-        int idx_thumb = cursor.getColumnIndex(Database.heroes.thumb);
-        int idx_type = cursor.getColumnIndex(Database.types.name);
+        int idx_id = cursor.getColumnIndex(Database.hero._id);
+        int idx_name = cursor.getColumnIndex(Database.hero.name);
+        int idx_thumb = cursor.getColumnIndex(Database.hero.thumb);
+        int idx_type = cursor.getColumnIndex(Database.type.name);
 
         final long _id = cursor.getLong(idx_id);
         final String thumb = cursor.getString(idx_thumb);
@@ -46,7 +46,7 @@ public class AdapterHeroList extends CursorRecAdapter<AdapterHeroList.ShowViewHo
         final String name = cursor.getString(idx_name);
 
         Glide.with(mContext)
-                .load(Uri.parse(Paragon.ASSET_PATH + thumb))
+                .load(Uri.parse(Paradex.ASSET_PATH + thumb))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .centerCrop()
                 .crossFade()

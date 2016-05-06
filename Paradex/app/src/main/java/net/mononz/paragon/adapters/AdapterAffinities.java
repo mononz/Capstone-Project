@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-import net.mononz.paragon.Paragon;
+import net.mononz.paragon.Paradex;
 import net.mononz.paragon.R;
 import net.mononz.paragon.library.CursorRecAdapter;
 import net.mononz.paragon.database.Database;
@@ -33,11 +33,11 @@ public class AdapterAffinities extends CursorRecAdapter<AdapterAffinities.ShowVi
     @Override
     public void onBindViewHolder(ShowViewHolder viewHolder, final Cursor cursor) {
 
-        int idx_name = cursor.getColumnIndex(Database.affinities.name);
-        int idx_image = cursor.getColumnIndex(Database.affinities.image);
+        int idx_name = cursor.getColumnIndex(Database.affinity.name);
+        int idx_image = cursor.getColumnIndex(Database.affinity.image);
 
         Glide.with(mContext)
-                .load(Uri.parse(Paragon.ASSET_PATH + cursor.getString(idx_image)))
+                .load(Uri.parse(Paradex.ASSET_PATH + cursor.getString(idx_image)))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .centerCrop()
                 .crossFade()

@@ -18,7 +18,7 @@ import com.bumptech.glide.load.model.StreamEncoder;
 import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
 import com.caverock.androidsvg.SVG;
 
-import net.mononz.paragon.Paragon;
+import net.mononz.paragon.Paradex;
 import net.mononz.paragon.R;
 import net.mononz.paragon.library.CursorRecAdapter;
 import net.mononz.paragon.database.Database;
@@ -53,10 +53,10 @@ public class AdapterAbilities extends CursorRecAdapter<AdapterAbilities.ShowView
     @Override
     public void onBindViewHolder(ShowViewHolder viewHolder, final Cursor cursor) {
 
-        int idx_name = cursor.getColumnIndex(Database.hero_abilities.name);
-        int idx_type = cursor.getColumnIndex(Database.ability_types.name);
-        int idx_description = cursor.getColumnIndex(Database.hero_abilities.description);
-        int idx_image = cursor.getColumnIndex(Database.hero_abilities.image);
+        int idx_name = cursor.getColumnIndex(Database.hero_ability.name);
+        int idx_type = cursor.getColumnIndex(Database.ability_type.name);
+        int idx_description = cursor.getColumnIndex(Database.hero_ability.description);
+        int idx_image = cursor.getColumnIndex(Database.hero_ability.image);
 
         final String image = cursor.getString(idx_image);
         final String name = cursor.getString(idx_name);
@@ -65,7 +65,7 @@ public class AdapterAbilities extends CursorRecAdapter<AdapterAbilities.ShowView
 
         requestBuilder
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .load(Uri.parse(Paragon.ASSET_PATH + image))
+                .load(Uri.parse(Paradex.ASSET_PATH + image))
                 .into(viewHolder.vImage);
 
         viewHolder.vType.setText(type);
