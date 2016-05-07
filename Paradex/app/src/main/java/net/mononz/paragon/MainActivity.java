@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onResume() {
         super.onResume();
         getSupportLoaderManager().initLoader(CURSOR_LOADER_ID, null, MainActivity.this);
-        Paradex.sendScreen(getString(R.string.main));
+        Paradex.sendScreen(getString(R.string.analytics_screen_main));
         if (adView != null) {
             adView.resume();
         }

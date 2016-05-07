@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
+    <!-- Layout Themes -->
+
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -14,11 +17,74 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+
+    <!-- Text Styles -->
+
+    <style name="DetailSubhead" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_title_2</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">4dp</item>
+    </style>
+
+    <style name="DetailBody1" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="layout_gravity">center_vertical</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="AccentedSubhead" parent="DetailSubhead">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:layout_marginTop">0dp</item>
+    </style>
+
+
+    <!-- ImageView Styles -->
+
+    <style name="ImageView">
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <style name="ImageAbility">
+        <item name="android:layout_width">65dp</item>
+        <item name="android:layout_height">65dp</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="ImageAbilityKey">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_margin">20dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+
+    <!-- Widget Themes -->
+
     <style name="CardViewSemiDark" parent="CardView">
         <item name="android:layout_margin">4dp</item>
         <item name="cardBackgroundColor">@color/card_background</item>
         <item name="cardCornerRadius">4dp</item>
         <item name="contentPadding">8dp</item>
+    </style>
+
+    <style name="Progress" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">8dp</item>
+        <item name="android:progressDrawable">@drawable/custom_progress</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:max">10</item>
+        <item name="layout_columnWeight">1</item>
+        <item name="layout_gravity">center_vertical</item>
     </style>
 
 </resources>

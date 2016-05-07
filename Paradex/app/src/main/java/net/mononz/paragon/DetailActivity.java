@@ -135,7 +135,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     @Override
     public void onResume() {
         super.onResume();
-        Paradex.sendScreen(getString(R.string.detail_) + ((mHeroName == null) ? Long.toString(mHeroID) : mHeroName));
+        Paradex.sendScreen(getString(R.string.analytics_screen_detail_) + ((mHeroName == null) ? Long.toString(mHeroID) : mHeroName));
         if (adView != null) {
             adView.resume();
         }

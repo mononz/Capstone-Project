@@ -14,12 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_detail_top" />
 
-    <include layout="@layout/nest_first" />
+    <include layout="@layout/nest_first"
+        tools:visibility="gone" />
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/CardViewSemiDark">
+        style="@style/CardViewSemiDark"
+        tools:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,20 +29,15 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextAppearance.AppCompat.Headline"
-                android:fontFamily="sans-serif-condensed"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:layout_gravity="center_horizontal"
-                android:text="Affinities" />
+                style="@style/DetailSubhead"
+                android:text="@string/hero_info_affinities" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_affinities"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="vertical" />
+                android:scrollbars="vertical"
+                tools:listitem="@layout/element_affinities" />
 
         </LinearLayout>
 
@@ -57,14 +54,8 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextAppearance.AppCompat.Headline"
-                android:fontFamily="sans-serif-condensed"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:layout_gravity="center_horizontal"
-                android:text="Basic Stats" />
+                style="@style/DetailSubhead"
+                android:text="@string/hero_info_basic" />
 
             <android.support.v7.widget.GridLayout
                 android:layout_width="match_parent"
@@ -76,114 +67,49 @@
                 app:columnCount="2">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/TextAppearance.AppCompat.Body1"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textColor="@color/text_title_2"
-                    android:text="Basic Attack Power"
-                    android:padding="8dp" />
+                    style="@style/DetailBody1"
+                    android:text="Basic Attack Power" />
 
                 <ProgressBar
                     android:id="@+id/trait_1_progress"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="8dp"
-                    android:progressDrawable="@drawable/custom_progress"
-                    app:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:layout_gravity="center_vertical"
-                    tools:progress="6"
-                    android:max="10" />
+                    style="@style/Progress"
+                    tools:progress="6" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/TextAppearance.AppCompat.Body1"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textColor="@color/text_title_2"
-                    android:text="Ability Attack Power"
-                    android:padding="8dp" />
+                    style="@style/DetailBody1"
+                    android:text="Ability Attack Power" />
 
                 <ProgressBar
                     android:id="@+id/trait_2_progress"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="8dp"
-                    android:progressDrawable="@drawable/custom_progress"
-                    app:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:layout_gravity="center_vertical"
-                    tools:progress="7"
-                    android:max="10" />
+                    style="@style/Progress"
+                    tools:progress="7" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/TextAppearance.AppCompat.Body1"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textColor="@color/text_title_2"
-                    android:text="Durability"
-                    android:padding="8dp" />
+                    style="@style/DetailBody1"
+                    android:text="Durability" />
 
                 <ProgressBar
                     android:id="@+id/trait_3_progress"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="8dp"
-                    android:progressDrawable="@drawable/custom_progress"
-                    app:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:layout_gravity="center_vertical"
-                    tools:progress="9"
-                    android:max="10" />
+                    style="@style/Progress"
+                    tools:progress="9" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/TextAppearance.AppCompat.Body1"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textColor="@color/text_title_2"
-                    android:text="Mobility"
-                    android:padding="8dp" />
+                    style="@style/DetailBody1"
+                    android:text="Mobility" />
 
                 <ProgressBar
                     android:id="@+id/trait_4_progress"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="8dp"
-                    android:progressDrawable="@drawable/custom_progress"
-                    app:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:layout_gravity="center_vertical"
-                    tools:progress="4"
-                    android:max="10" />
+                    style="@style/Progress"
+                    tools:progress="4" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/TextAppearance.AppCompat.Body1"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textColor="@color/text_title_2"
-                    android:text="Difficulty"
-                    android:padding="8dp" />
+                    style="@style/DetailBody1"
+                    android:text="Difficulty" />
 
                 <ProgressBar
                     android:id="@+id/trait_5_progress"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="8dp"
-                    android:progressDrawable="@drawable/custom_progress"
-                    app:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:layout_gravity="center_vertical"
-                    tools:progress="3"
-                    android:max="10" />
+                    style="@style/Progress"
+                    tools:progress="3" />
 
             </android.support.v7.widget.GridLayout>
 
@@ -202,20 +128,15 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextAppearance.AppCompat.Headline"
-                android:fontFamily="sans-serif-condensed"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:layout_gravity="center_horizontal"
-                android:text="Abilities" />
+                style="@style/DetailSubhead"
+                android:text="@string/hero_info_abilities"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_abilities"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="vertical" />
+                android:scrollbars="vertical"
+                tools:listitem="@layout/element_abilities" />
 
         </LinearLayout>
 

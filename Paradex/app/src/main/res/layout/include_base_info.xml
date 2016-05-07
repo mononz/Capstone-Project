@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/DetailSubhead"
+        android:text="@string/hero_info_tagline" />
+
+    <TextView
+        android:id="@+id/tagline_text"
+        style="@style/DetailBody1"
+        tools:text="No hiding from justice" />
+
+    <TextView
+        style="@style/DetailSubhead"
+        android:text="@string/hero_info_role" />
+
+    <TextView
+        android:id="@+id/role_text"
+        style="@style/DetailBody1"
+        tools:text="Carry" />
+
+    <TextView
+        style="@style/DetailSubhead"
+        android:text="@string/hero_info_attack" />
+
+    <TextView
+        android:id="@+id/attack_text"
+        style="@style/DetailBody1"
+        tools:text="Ranged" />
+
+    <TextView
+        style="@style/DetailSubhead"
+        android:text="@string/hero_info_scaling" />
+
+    <TextView
+        android:id="@+id/scaling_text"
+        style="@style/DetailBody1"
+        tools:text="Energy Damage" />
+
+</LinearLayout>
