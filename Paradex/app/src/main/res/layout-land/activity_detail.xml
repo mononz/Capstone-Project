@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -15,7 +16,8 @@
         android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:layout_above="@+id/adview">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,11 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dip"
                 android:layout_weight="1"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                android:paddingStart="@dimen/padding_horizontal"
-                android:paddingLeft="@dimen/padding_horizontal"
-                android:paddingEnd="@dimen/padding_horizontal"
-                android:paddingRight="@dimen/padding_horizontal">
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                 <include layout="@layout/nested_scroll" />
 
@@ -45,5 +43,13 @@
         </LinearLayout>
 
     </android.support.design.widget.CoordinatorLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adUnitId="@string/adunit_detail"
+        ads:adSize="SMART_BANNER"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package net.mononz.paragon;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -22,8 +23,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import net.mononz.paragon.adapters.AdapterHeroList;
 import net.mononz.paragon.database.Database;
+import net.mononz.paragon.sync.SyncAdapter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Bind(R.id.toolbar) protected Toolbar toolbar;
     @Bind(R.id.recycler) protected RecyclerView recycler;
+    @Bind(R.id.adview) protected AdView adView;
 
     private static final int CURSOR_LOADER_ID = 1;
     private AdapterHeroList mAdapterHeroes;
@@ -49,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             public void openHero(long _id, String name, View view) {
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                 intent.putExtra(DetailActivity.HERO_ID, _id);
+                intent.putExtra(DetailActivity.HERO_Name, name);
                 startActivity(intent);
             }
         });
@@ -57,6 +64,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(llm);
         recycler.setAdapter(mAdapterHeroes);
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice(getString(R.string.test_device))
+                .build();
+        adView.loadAd(adRequest);
     }
 
     @Override
@@ -64,6 +77,40 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onResume();
         getSupportLoaderManager().initLoader(CURSOR_LOADER_ID, null, MainActivity.this);
         Paradex.sendScreen(getString(R.string.main));
+        if (adView != null) {
+            adView.resume();
+        }
+
+        // needs a sync timer say 6 hours?
+        // needs a no internet check
+
+        final Snackbar snackBar = Snackbar.make(findViewById(R.id.main_coordinator), "Updating Paragon Database", Snackbar.LENGTH_LONG);
+        snackBar.setAction("Dismiss", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                snackBar.dismiss();
+            }
+        });
+        snackBar.show();
+
+        SyncAdapter.initializeSyncAdapter(this);
+        SyncAdapter.syncImmediately(this);
+    }
+
+    @Override
+    public void onPause() {
+        if (adView != null) {
+            adView.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (adView != null) {
+            adView.destroy();
+        }
+        super.onDestroy();
     }
 
     @Override

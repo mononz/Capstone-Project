@@ -30,15 +30,14 @@ public class Paradex extends Application {
 
     private static GoogleAnalytics analytics;
     private static Tracker mTracker;
-
     public static Database database;
-
     public static NetworkInterface network;
-
-    private static final String BASE_URL = "http://paragon.mononz.net/";
 
     public final OkHttpClient client = new OkHttpClient();
 
+    private static final int NETWORK_TIMEOUT = 30;
+
+    private static final String BASE_URL = "http://paragon.mononz.net/";
     public static final String ASSET_PATH = "https://storage.googleapis.com/paragon/";
 
     @Override
@@ -48,14 +47,16 @@ public class Paradex extends Application {
         analytics = GoogleAnalytics.getInstance(this);
 
         database = new Database(this);
+
         if (BuildConfig.DEBUG) {
+            // Add Stetho only in debug mode to analyse database in chrome inspector
             Stetho.initializeWithDefaults(this);
         }
 
         OkHttpClient newClient = client.newBuilder()
-                .readTimeout(30, TimeUnit.SECONDS)
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
+                .connectTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
+                .writeTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
                 .addNetworkInterceptor(new StethoInterceptor())
                 .addInterceptor(new Interceptor() {
                     @Override

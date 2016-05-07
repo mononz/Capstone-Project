@@ -9,6 +9,7 @@
 
     <string name="legal">This tool is not created, sponsored by or endorsed by Epic Games.\n\nThis tool is not official and is not connected to the games developer or publisher. All in-game names, descriptions and imagery are copyright and/or trademark to their respective owners and usage for this game service falls within fair usage guidelines.\n\nThis app is created by players for players.\n\nDownload the game from https://www.epicgames.com/paragon/ and start playing!</string>
 
+    <string name="test_device">92F64085265F89AD88C43A7E749B8E5F</string>
     <string name="adunit_main">ca-app-pub-8226253452219521/9938083298</string>
     <string name="adunit_detail">ca-app-pub-8226253452219521/2414816494</string>
 

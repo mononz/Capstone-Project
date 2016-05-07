@@ -14,4 +14,11 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="CardViewSemiDark" parent="CardView">
+        <item name="android:layout_margin">4dp</item>
+        <item name="cardBackgroundColor">@color/card_background</item>
+        <item name="cardCornerRadius">4dp</item>
+        <item name="contentPadding">8dp</item>
+    </style>
+
 </resources>

@@ -8,6 +8,8 @@
 
     <color name="hero_banner">#242424</color>
 
+    <color name="card_background">#c8424242</color>
+
     <color name="text_title_2">#ACAB9C</color>
 
     <color name="progress_background">#848378</color>

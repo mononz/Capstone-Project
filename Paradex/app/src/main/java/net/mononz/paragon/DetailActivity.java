@@ -28,6 +28,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.model.StreamEncoder;
 import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
 import com.caverock.androidsvg.SVG;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import net.mononz.paragon.adapters.AdapterAbilities;
 import net.mononz.paragon.adapters.AdapterAffinities;
@@ -46,7 +48,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     @Nullable @Bind(R.id.collapsing_toolbar) protected CollapsingToolbarLayout collapsingToolbarLayout;
     @Bind(R.id.toolbar) protected Toolbar toolbar;
     @Nullable @Bind(R.id.hero_image) protected ImageView hero_image;
-    @Nullable @Bind(R.id.hero_tagline) protected TextView hero_tagline;
+    @Bind(R.id.tagline_text) protected TextView tagline_text;
     @Bind(R.id.type_text) protected TextView type_text;
     @Bind(R.id.type_image) protected ImageView type_image;
     @Bind(R.id.role_text) protected TextView role_text;
@@ -57,6 +59,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     @Bind(R.id.trait_3_progress) protected ProgressBar trait_3_progress;
     @Bind(R.id.trait_4_progress) protected ProgressBar trait_4_progress;
     @Bind(R.id.trait_5_progress) protected ProgressBar trait_5_progress;
+    @Bind(R.id.adview) protected AdView adView;
 
     @Bind(R.id.recycler_abilities) protected RecyclerView recycler_abilities;
     @Bind(R.id.recycler_affinities) protected RecyclerView recycler_affinities;
@@ -70,11 +73,13 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     private AdapterAffinities mAdapterAffinities;
 
     public static final String HERO_ID = "Hero_ID";
+    public static final String HERO_Name = "Hero_Name";
 
     private String mExternal = null;
     private String mYouTube = null;
 
     private long mHeroID = -1;
+    private String mHeroName = null;
 
     private GenericRequestBuilder<Uri, InputStream, SVG, PictureDrawable> requestBuilder;
 
@@ -103,6 +108,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             mHeroID = extras.getLong(HERO_ID, -1);
+            mHeroName = extras.getString(HERO_Name, null);
             setTitle("");
             getSupportLoaderManager().initLoader(LOADER_HEROES_BASE, null, DetailActivity.this);
             getSupportLoaderManager().initLoader(LOADER_HEROES_ABILITIES, null, DetailActivity.this);
@@ -118,12 +124,37 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         recycler_abilities.setLayoutManager(llm1);
         recycler_abilities.setNestedScrollingEnabled(false);
         recycler_abilities.setAdapter(mAdapterAbilities);
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice(getString(R.string.test_device))
+                .build();
+        adView.loadAd(adRequest);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Paradex.sendScreen(getString(R.string.detail_) + mHeroID);
+        Paradex.sendScreen(getString(R.string.detail_) + ((mHeroName == null) ? Long.toString(mHeroID) : mHeroName));
+        if (adView != null) {
+            adView.resume();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        if (adView != null) {
+            adView.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (adView != null) {
+            adView.destroy();
+        }
+        super.onDestroy();
     }
 
     @Override
@@ -160,7 +191,8 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
             case LOADER_HEROES_BASE:
                 return new CursorLoader(this, ContentUris.withAppendedId(Database.hero.CONTENT_URI, mHeroID), null, null, null, null);
             case LOADER_HEROES_ABILITIES:
-                return new CursorLoader(this, Database.hero_ability.CONTENT_URI, new String[]{Database.hero_ability.FULL_ID, Database.hero_ability.name, Database.hero_ability.description, Database.hero_ability.image, Database.ability_type.name},
+                return new CursorLoader(this, Database.hero_ability.CONTENT_URI,
+                        new String[]{Database.hero_ability.FULL_ID, Database.hero_ability.name, Database.hero_ability.description, Database.hero_ability.image, Database.hero_ability.key_pc, Database.hero_ability.key_ps, Database.ability_type.name},
                         Database.hero_ability.FULL_HEROES_ID + "=?", new String[]{Long.toString(mHeroID)}, null);
             case LOADER_HEROES_TRAITS:
                 return new CursorLoader(this, ContentUris.withAppendedId(Database.hero_trait.CONTENT_URI, mHeroID), null, null, null, null);
@@ -200,8 +232,8 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
                         collapsingToolbarLayout.setTitle(data.getString(idx_name));
                     }
 
-                    if (hero_tagline != null) {
-                        hero_tagline.setText("\"" + data.getString(idx_tagline) + "''");
+                    if (tagline_text != null) {
+                        tagline_text.setText("\"" + data.getString(idx_tagline) + "''");
                     }
 
                     if (hero_image != null) {
