@@ -11,12 +11,17 @@
 
     <string name="legal">This tool is not created, sponsored by or endorsed by Epic Games.\n\nThis tool is not official and is not connected to the games developer or publisher. All in-game names, descriptions and imagery are copyright and/or trademark to their respective owners and usage for this game service falls within fair usage guidelines.\n\nThis app is created by players for players.\n\nDownload the game from https://www.epicgames.com/paragon/ and start playing!</string>
 
+    <string name="sync_snack_message">Updating Paragon Database</string>
+    <string name="sync_snack_dismiss">Dismiss</string>
+
+    <string name="menu_main_disclaimer">Disclaimer</string>
+    <string name="close">Close</string>
+
 
     <!-- Detail Pages -->
 
     <string name="menu_detail_epic">Epic Games</string>
     <string name="menu_detail_spotlight">Hero Spotlight</string>
-    <string name="menu_main_disclaimer">Disclaimer</string>
 
     <string name="hero_info_tagline">Tagline</string>
     <string name="hero_info_role">Recommended Role</string>

@@ -1,6 +1,8 @@
 package net.mononz.paragon;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.facebook.stetho.Stetho;
@@ -35,10 +37,11 @@ public class Paradex extends Application {
 
     public final OkHttpClient client = new OkHttpClient();
 
-    private static final int NETWORK_TIMEOUT = 30;
-
     private static final String BASE_URL = "http://paragon.mononz.net/";
     public static final String ASSET_PATH = "https://storage.googleapis.com/paragon/";
+
+    public static final String SyncPreferences = "SyncPreferences";
+    public static final String LastUpdated = "last_updated";
 
     @Override
     public void onCreate() {
@@ -54,9 +57,9 @@ public class Paradex extends Application {
         }
 
         OkHttpClient newClient = client.newBuilder()
-                .readTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
-                .connectTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
-                .writeTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(getResources().getInteger(R.integer.network_time_out), TimeUnit.SECONDS)
+                .connectTimeout(getResources().getInteger(R.integer.network_time_out), TimeUnit.SECONDS)
+                .writeTimeout(getResources().getInteger(R.integer.network_time_out), TimeUnit.SECONDS)
                 .addNetworkInterceptor(new StethoInterceptor())
                 .addInterceptor(new Interceptor() {
                     @Override
@@ -109,13 +112,20 @@ public class Paradex extends Application {
 
     public static void sendScreen(String screen) {
         if (!BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "Hit: " + screen);
             Tracker mTracker = getDefaultTracker();
             if (mTracker != null) {
                 mTracker.setScreenName(screen);
                 mTracker.send(new HitBuilders.ScreenViewBuilder().build());
             }
         }
+    }
+
+
+    public boolean timeForSync() {
+        SharedPreferences sharedpreferences = getSharedPreferences(SyncPreferences, Context.MODE_PRIVATE);
+        long lastSyncTime = sharedpreferences.getLong(LastUpdated, 0);
+        long threshold_millis  = getResources().getInteger(R.integer.sync_threshold) * 60 * 60 * 1000;
+        return System.currentTimeMillis() > (lastSyncTime + threshold_millis);
     }
 
 }

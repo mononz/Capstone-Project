@@ -8,6 +8,7 @@ import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.SyncResult;
 import android.net.Uri;
 import android.os.Bundle;
@@ -69,10 +70,14 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         syncHeroTrait();
         syncRole();
         syncScaling();
-        // do hero last
-        syncHero();
+        syncHero(); // do hero last
 
         Log.d("mNotifyManager", "done");
+
+        SharedPreferences sharedpreferences = getContext().getSharedPreferences(Paradex.SyncPreferences, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putLong(Paradex.LastUpdated, System.currentTimeMillis());
+        editor.apply();
 
         mNotifyManager.cancel(notification_id);
     }

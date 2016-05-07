@@ -80,21 +80,20 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if (adView != null) {
             adView.resume();
         }
+        // update database if greater than sync threshold
+        if (((Paradex) getApplication()).timeForSync()) {
+            final Snackbar snackBar = Snackbar.make(findViewById(R.id.main_coordinator), getString(R.string.sync_snack_message), Snackbar.LENGTH_LONG);
+            snackBar.setAction(getString(R.string.sync_snack_dismiss), new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    snackBar.dismiss();
+                }
+            });
+            snackBar.show();
 
-        // needs a sync timer say 6 hours?
-        // needs a no internet check
-
-        final Snackbar snackBar = Snackbar.make(findViewById(R.id.main_coordinator), "Updating Paragon Database", Snackbar.LENGTH_LONG);
-        snackBar.setAction("Dismiss", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackBar.dismiss();
-            }
-        });
-        snackBar.show();
-
-        SyncAdapter.initializeSyncAdapter(this);
-        SyncAdapter.syncImmediately(this);
+            SyncAdapter.initializeSyncAdapter(this);
+            SyncAdapter.syncImmediately(this);
+        }
     }
 
     @Override
@@ -127,9 +126,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 final SpannableString s = new SpannableString(getString(R.string.legal));
                 Linkify.addLinks(s, Linkify.ALL);
                 final AlertDialog d = new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("Disclaimer")
+                        .setTitle(getString(R.string.menu_main_disclaimer))
                         .setMessage(s)
-                        .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(getString(R.string.close), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
