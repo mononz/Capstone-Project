@@ -14,28 +14,23 @@
 
         <ImageView
             android:id="@+id/key_pc"
-            android:contentDescription="@string/app_name"
+            android:contentDescription="@string/description_hotkey_computer"
             style="@style/ImageAbilityKey"
             tools:src="@mipmap/ic_launcher" />
 
         <ImageView
             android:id="@+id/ability_image"
-            android:contentDescription="@string/app_name"
+            android:contentDescription="@string/description_ability_icon"
             style="@style/ImageAbility"
             tools:src="@mipmap/ic_launcher" />
 
         <ImageView
             android:id="@+id/key_ps"
-            android:contentDescription="@string/app_name"
+            android:contentDescription="@string/description_hotkey_playstation"
             style="@style/ImageAbilityKey"
             tools:src="@mipmap/ic_launcher" />
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/ability_type"
-        style="@style/DetailBody1"
-        tools:text="Passive" />
 
     <TextView
         android:id="@+id/ability_name"

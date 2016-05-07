@@ -46,10 +46,8 @@
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         ads:adUnitId="@string/adunit_detail"
         ads:adSize="SMART_BANNER"
-        android:layout_alignParentBottom="true" />
+        style="@style/AdView" />
 
 </RelativeLayout>

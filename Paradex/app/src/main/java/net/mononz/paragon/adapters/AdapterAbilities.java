@@ -55,7 +55,6 @@ public class AdapterAbilities extends CursorRecAdapter<AdapterAbilities.ShowView
     public void onBindViewHolder(ShowViewHolder viewHolder, final Cursor cursor) {
 
         int idx_name = cursor.getColumnIndex(Database.hero_ability.name);
-        int idx_type = cursor.getColumnIndex(Database.ability_type.name);
         int idx_description = cursor.getColumnIndex(Database.hero_ability.description);
         int idx_image = cursor.getColumnIndex(Database.hero_ability.image);
         int idx_key_pc = cursor.getColumnIndex(Database.hero_ability.key_pc);
@@ -65,7 +64,6 @@ public class AdapterAbilities extends CursorRecAdapter<AdapterAbilities.ShowView
         final String key_pc = cursor.getString(idx_key_pc);
         final String key_ps = cursor.getString(idx_key_ps);
         final String name = cursor.getString(idx_name);
-        final String type = cursor.getString(idx_type);
         final String description = cursor.getString(idx_description);
 
         Glide.with(mContext)
@@ -85,7 +83,6 @@ public class AdapterAbilities extends CursorRecAdapter<AdapterAbilities.ShowView
                 .crossFade()
                 .into(viewHolder.vKeyPS);
 
-        viewHolder.vType.setText(type);
         viewHolder.vName.setText(name);
         viewHolder.vDescription.setText(description);
     }
@@ -103,7 +100,6 @@ public class AdapterAbilities extends CursorRecAdapter<AdapterAbilities.ShowView
         @Bind(R.id.key_ps) ImageView vKeyPS;
         @Bind(R.id.ability_image) ImageView vImage;
         @Bind(R.id.ability_name) TextView vName;
-        @Bind(R.id.ability_type) TextView vType;
         @Bind(R.id.ability_description) TextView vDescription;
 
         public ShowViewHolder(View v) {

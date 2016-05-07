@@ -4,12 +4,12 @@
 
     <item android:id="@+id/menu_external"
         android:icon="@drawable/ic_external"
-        android:title="Epic Games"
+        android:title="@string/menu_detail_epic"
         app:showAsAction="ifRoom" />
 
     <item android:id="@+id/menu_youtube"
         android:icon="@drawable/ic_youtube"
-        android:title="Hero Spotlight"
+        android:title="@string/menu_detail_spotlight"
         app:showAsAction="ifRoom" />
 
 </menu>

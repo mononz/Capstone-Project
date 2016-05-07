@@ -120,8 +120,7 @@ public class Provider extends ContentProvider {
                 break;
             case HERO_ABILITY:
                 SQLiteQueryBuilder HERO_ABILITIES = new SQLiteQueryBuilder();
-                HERO_ABILITIES.setTables(Database.hero_ability.TABLE_NAME +
-                        " LEFT JOIN " + Database.ability_type.TABLE_NAME + " ON " + Database.ability_type.FULL_ID + " = " + Database.hero_ability.type);
+                HERO_ABILITIES.setTables(Database.hero_ability.TABLE_NAME);
                 retCursor = HERO_ABILITIES.query(mOpenHelper.getReadableDatabase(), projection, selection, selectionArgs, null, null, sortOrder);
                 break;
             case HERO_AFFINITY:

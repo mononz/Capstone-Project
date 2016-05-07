@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <!-- Layout Themes -->
 
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -20,6 +18,16 @@
 
     <!-- Text Styles -->
 
+    <style name="HeroTitle" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/text_body_padding</item>
+    </style>
+
     <style name="DetailSubhead" parent="TextAppearance.AppCompat.Subhead">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -28,62 +36,79 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginTop">@dimen/text_body_padding</item>
     </style>
 
     <style name="DetailBody1" parent="TextAppearance.AppCompat.Body1">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">sans-serif-condensed</item>
-        <item name="android:padding">4dp</item>
+        <item name="android:padding">@dimen/text_body_padding</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="layout_gravity">center_vertical</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
 
     <style name="AccentedSubhead" parent="DetailSubhead">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginTop">@dimen/margin_zero</item>
     </style>
 
 
     <!-- ImageView Styles -->
 
-    <style name="ImageView">
-        <item name="android:padding">8dp</item>
-    </style>
-
     <style name="ImageAbility">
-        <item name="android:layout_width">65dp</item>
-        <item name="android:layout_height">65dp</item>
-        <item name="android:layout_margin">8dp</item>
+        <item name="android:layout_width">@dimen/size_ability_icon</item>
+        <item name="android:layout_height">@dimen/size_ability_icon</item>
+        <item name="android:layout_margin">@dimen/padding_ability_icon</item>
     </style>
 
     <style name="ImageAbilityKey">
-        <item name="android:layout_width">30dp</item>
-        <item name="android:layout_height">30dp</item>
-        <item name="android:layout_margin">20dp</item>
+        <item name="android:layout_width">@dimen/size_key_icon</item>
+        <item name="android:layout_height">@dimen/size_key_icon</item>
+        <item name="android:layout_margin">@dimen/margin_key_icon</item>
         <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="ImageAffinity">
+        <item name="android:layout_width">@dimen/size_affinity_icon</item>
+        <item name="android:layout_height">@dimen/size_affinity_icon</item>
+        <item name="android:layout_margin">@dimen/padding_affinity_icon</item>
+    </style>
+
+    <style name="ImageAttackType">
+        <item name="android:layout_width">@dimen/size_attack_icon</item>
+        <item name="android:layout_height">@dimen/size_attack_icon</item>
+        <item name="android:layout_margin">@dimen/padding_attack_icon</item>
+        <item name="android:layout_gravity">center_horizontal</item>
     </style>
 
 
     <!-- Widget Themes -->
 
     <style name="CardViewSemiDark" parent="CardView">
-        <item name="android:layout_margin">4dp</item>
+        <item name="android:layout_margin">@dimen/default_card_half_padding</item>
         <item name="cardBackgroundColor">@color/card_background</item>
-        <item name="cardCornerRadius">4dp</item>
-        <item name="contentPadding">8dp</item>
+        <item name="cardCornerRadius">@dimen/default_card_radius</item>
+        <item name="contentPadding">@dimen/default_card_padding</item>
+    </style>
+
+    <style name="AdView" parent="CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
     </style>
 
     <style name="Progress" parent="@android:style/Widget.ProgressBar.Horizontal">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">8dp</item>
+        <item name="android:layout_height">@dimen/progress_bar_height</item>
         <item name="android:progressDrawable">@drawable/custom_progress</item>
-        <item name="android:layout_margin">10dp</item>
-        <item name="android:max">10</item>
-        <item name="layout_columnWeight">1</item>
+        <item name="android:layout_margin">@dimen/progress_bar_padding</item>
+        <item name="android:max">@integer/progress_max</item>
+        <item name="layout_columnWeight">@integer/progress_weight</item>
         <item name="layout_gravity">center_vertical</item>
     </style>
 

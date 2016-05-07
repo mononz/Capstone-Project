@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- All layout static -->
+
+    <integer name="nested_first_weight_left">1</integer>
+    <integer name="nested_first_weight_right">2</integer>
+
+    <integer name="stats_column_count">2</integer>
+
+    <integer name="progress_max">10</integer>
+    <integer name="progress_weight">1</integer>
+
+
+    <!-- Layout Specific -->
+
     <integer name="hero_grid_columns">2</integer>
     <integer name="ability_grid_columns">1</integer>
 
-    <dimen name="margin_detail_top">15dp</dimen>
-    <dimen name="padding_horizontal">10dp</dimen>
 </resources>

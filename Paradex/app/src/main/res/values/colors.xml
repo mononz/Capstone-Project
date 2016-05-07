@@ -14,4 +14,8 @@
 
     <color name="progress_background">#848378</color>
 
+    <color name="scrim_start">#b8242424</color>
+    <color name="scrim_center">#37000000</color>
+    <color name="scrim_end">#00000000</color>
+
 </resources>

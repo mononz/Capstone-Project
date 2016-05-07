@@ -23,11 +23,7 @@
             <ImageView
                 android:id="@+id/type_image"
                 android:contentDescription="@string/app_name"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="4dp"
-                android:layout_gravity="center_horizontal" />
+                style="@style/ImageAttackType" />
 
         </LinearLayout>
 
@@ -38,7 +34,7 @@
         android:layout_height="wrap_content"
         style="@style/CardViewSemiDark">
 
-        <include layout="@layout/include_base_info" />
+        <include layout="@layout/include_hero_info" />
 
     </android.support.v7.widget.CardView>
 

@@ -35,7 +35,7 @@
                     android:id="@+id/hero_image"
                     android:contentDescription="@string/app_name"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="@dimen/toolbar_max_height"
                     android:adjustViewBounds="true"
                     android:fitsSystemWindows="true"
                     android:foreground="@drawable/scrim"
@@ -44,7 +44,8 @@
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize" />
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin" />
 
             </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -54,13 +55,7 @@
             android:id="@+id/nested_scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:paddingStart="@dimen/padding_horizontal"
-            android:paddingLeft="@dimen/padding_horizontal"
-            android:paddingEnd="@dimen/padding_horizontal"
-            android:paddingRight="@dimen/padding_horizontal">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <include layout="@layout/nested_scroll" />
 
@@ -70,9 +65,8 @@
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         ads:adUnitId="@string/adunit_detail"
-        ads:adSize="SMART_BANNER" />
+        ads:adSize="SMART_BANNER"
+        style="@style/AdView" />
 
 </LinearLayout>

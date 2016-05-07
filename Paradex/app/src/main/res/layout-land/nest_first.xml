@@ -8,7 +8,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="0dip"
         android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_weight="@integer/nested_first_weight_left"
         style="@style/CardViewSemiDark">
 
         <LinearLayout
@@ -19,24 +19,13 @@
 
             <TextView
                 android:id="@+id/type_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextAppearance.AppCompat.Subhead"
-                android:fontFamily="sans-serif-condensed"
-                android:textColor="@color/text_title_2"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:layout_gravity="center_horizontal"
+                style="@style/DetailSubhead"
                 tools:text="Ranger" />
 
             <ImageView
                 android:id="@+id/type_image"
                 android:contentDescription="@string/app_name"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="4dp"
-                android:layout_gravity="center_horizontal" />
+                style="@style/ImageAttackType" />
 
         </LinearLayout>
 
@@ -45,7 +34,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="0dip"
         android:layout_height="wrap_content"
-        android:layout_weight="3"
+        android:layout_weight="@integer/nested_first_weight_right"
         style="@style/CardViewSemiDark">
 
         <LinearLayout
@@ -53,7 +42,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/include_base_info" />
+            <include layout="@layout/include_hero_info" />
 
         </LinearLayout>
 

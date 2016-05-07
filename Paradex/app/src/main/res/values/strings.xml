@@ -14,6 +14,10 @@
 
     <!-- Detail Pages -->
 
+    <string name="menu_detail_epic">Epic Games</string>
+    <string name="menu_detail_spotlight">Hero Spotlight</string>
+    <string name="menu_main_disclaimer">Disclaimer</string>
+
     <string name="hero_info_tagline">Tagline</string>
     <string name="hero_info_role">Recommended Role</string>
     <string name="hero_info_attack">Attack Type</string>
@@ -22,6 +26,21 @@
     <string name="hero_info_affinities">Affinities</string>
     <string name="hero_info_basic">Basic Stats</string>
     <string name="hero_info_abilities">Abilities</string>
+
+    <string name="hero_stats_attack">Basic Attack Power</string>
+    <string name="hero_stats_ability">Ability Attack Power</string>
+    <string name="hero_stats_durability">Durability</string>
+    <string name="hero_stats_mobility">Mobility</string>
+    <string name="hero_stats_difficulty">Difficulty</string>
+
+
+    <!-- Content Descriptions -->
+
+    <string name="description_hotkey_computer">Computer hotkey</string>
+    <string name="description_ability_icon">Ability Icon</string>
+    <string name="description_hotkey_playstation">Playstation hotkey</string>
+    <string name="description_affinity">Hero affinity</string>
+    <string name="description_hero_avatar">Hero avatar</string>
 
 
     <!-- Analytics -->

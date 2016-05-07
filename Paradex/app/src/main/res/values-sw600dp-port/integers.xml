@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <integer name="hero_grid_columns">3</integer>
     <integer name="ability_grid_columns">2</integer>
 
-    <dimen name="margin_detail_top">15dp</dimen>
-    <dimen name="padding_horizontal">32dp</dimen>
 </resources>

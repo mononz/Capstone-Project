@@ -191,8 +191,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
             case LOADER_HEROES_BASE:
                 return new CursorLoader(this, ContentUris.withAppendedId(Database.hero.CONTENT_URI, mHeroID), null, null, null, null);
             case LOADER_HEROES_ABILITIES:
-                return new CursorLoader(this, Database.hero_ability.CONTENT_URI,
-                        new String[]{Database.hero_ability.FULL_ID, Database.hero_ability.name, Database.hero_ability.description, Database.hero_ability.image, Database.hero_ability.key_pc, Database.hero_ability.key_ps, Database.ability_type.name},
+                return new CursorLoader(this, Database.hero_ability.CONTENT_URI, null,
                         Database.hero_ability.FULL_HEROES_ID + "=?", new String[]{Long.toString(mHeroID)}, null);
             case LOADER_HEROES_TRAITS:
                 return new CursorLoader(this, ContentUris.withAppendedId(Database.hero_trait.CONTENT_URI, mHeroID), null, null, null, null);

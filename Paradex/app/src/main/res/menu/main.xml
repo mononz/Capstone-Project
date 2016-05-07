@@ -4,7 +4,7 @@
 
     <item android:id="@+id/menu_disclaimer"
         android:icon="@drawable/ic_disclaimer"
-        android:title="Disclaimer"
+        android:title="@string/menu_main_disclaimer"
         app:showAsAction="always" />
 
 </menu>
