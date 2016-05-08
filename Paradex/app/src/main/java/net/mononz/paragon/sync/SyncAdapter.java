@@ -37,10 +37,6 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
     private static final String LOG_TAG = SyncAdapter.class.getSimpleName();
 
-    public static final String CONTENT_AUTHORITY = "net.mononz.paragon";
-    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
-    public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath("SyncAdapter").build();
-
     private static final int notification_id = 0;
     private NotificationManager mNotifyManager;
     private NotificationCompat.Builder mBuilder;
@@ -50,10 +46,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
         mNotifyManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
         mBuilder = new NotificationCompat.Builder(getContext());
-        mBuilder.setContentTitle("Paradex")
-                .setContentText("Updating Database")
+        mBuilder.setContentTitle(getContext().getString(R.string.app_name))
+                .setContentText(getContext().getString(R.string.sync_database))
                 .setColor(ContextCompat.getColor(getContext(), R.color.colorAccent))
-                .setSmallIcon(R.mipmap.ic_launcher);
+                .setSmallIcon(R.mipmap.ic_notification);
         mBuilder.setProgress(0, 0, true);
     }
 
@@ -83,7 +79,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     private void syncAbilityTypes() {
-        updateNotification("AbilityType");
+        //updateNotification("AbilityType");
         Call<GsAbilityType[]> call = Paradex.network.AbilityType();
         try {
             Response<GsAbilityType[]> response = call.execute();
@@ -109,7 +105,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     private void syncAffinity() {
-        updateNotification("Affinity");
+        //updateNotification("Affinity");
         Call<GsAffinity[]> call = Paradex.network.Affinity();
         try {
             Response<GsAffinity[]> response = call.execute();
@@ -136,7 +132,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     private void syncAttack() {
-        updateNotification("Attack");
+        //updateNotification("Attack");
         Call<GsAttack[]> call = Paradex.network.Attack();
         try {
             Response<GsAttack[]> response = call.execute();
@@ -162,7 +158,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     private void syncHero() {
-        updateNotification("Hero");
+        //updateNotification("Hero");
         Call<GsHero[]> call = Paradex.network.Hero();
         try {
             Response<GsHero[]> response = call.execute();
@@ -198,7 +194,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     private void syncHeroAbility() {
-        updateNotification("HeroAbility");
+        //updateNotification("HeroAbility");
         Call<GsHeroAbility[]> call = Paradex.network.HeroAbility();
         try {
             Response<GsHeroAbility[]> response = call.execute();
@@ -231,7 +227,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     private void syncHeroAffinity() {
-        updateNotification("HeroAffinity");
+        //updateNotification("HeroAffinity");
         Call<GsHeroAffinity[]> call = Paradex.network.HeroAffinity();
         try {
             Response<GsHeroAffinity[]> response = call.execute();
@@ -258,7 +254,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     private void syncHeroTrait() {
-        updateNotification("HeroTrait");
+        //updateNotification("HeroTrait");
         Call<GsHeroTrait[]> call = Paradex.network.HeroTrait();
         try {
             Response<GsHeroTrait[]> response = call.execute();
@@ -288,7 +284,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     private void syncRole() {
-        updateNotification("Role");
+        //updateNotification("Role");
         Call<GsRole[]> call = Paradex.network.Role();
         try {
             Response<GsRole[]> response = call.execute();
@@ -314,7 +310,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     private void syncScaling() {
-        updateNotification("Scaling");
+        //updateNotification("Scaling");
         Call<GsScaling[]> call = Paradex.network.Scaling();
         try {
             Response<GsScaling[]> response = call.execute();
@@ -340,7 +336,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     private void syncType() {
-        updateNotification("Type");
+        //updateNotification("Type");
         Call<GsType[]> call = Paradex.network.Type();
         try {
             Response<GsType[]> response = call.execute();

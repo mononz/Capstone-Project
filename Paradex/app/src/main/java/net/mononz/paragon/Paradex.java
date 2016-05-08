@@ -96,7 +96,6 @@ public class Paradex extends Application {
             // Make myHandler the new default uncaught exception handler.
             Thread.setDefaultUncaughtExceptionHandler(myHandler);
         }
-
     }
 
     synchronized private static Tracker getDefaultTracker() {
@@ -120,11 +119,13 @@ public class Paradex extends Application {
         }
     }
 
-
     public boolean timeForSync() {
         SharedPreferences sharedpreferences = getSharedPreferences(SyncPreferences, Context.MODE_PRIVATE);
         long lastSyncTime = sharedpreferences.getLong(LastUpdated, 0);
         long threshold_millis  = getResources().getInteger(R.integer.sync_threshold) * 60 * 60 * 1000;
+        if (BuildConfig.DEBUG) {
+            threshold_millis = 15 * 60 * 1000; // 15 minutes for debug
+        }
         return System.currentTimeMillis() > (lastSyncTime + threshold_millis);
     }
 

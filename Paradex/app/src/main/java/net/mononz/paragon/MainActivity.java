@@ -82,15 +82,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         }
         // update database if greater than sync threshold
         if (((Paradex) getApplication()).timeForSync()) {
-            final Snackbar snackBar = Snackbar.make(findViewById(R.id.main_coordinator), getString(R.string.sync_snack_message), Snackbar.LENGTH_LONG);
-            snackBar.setAction(getString(R.string.sync_snack_dismiss), new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    snackBar.dismiss();
-                }
-            });
-            snackBar.show();
-
             SyncAdapter.initializeSyncAdapter(this);
             SyncAdapter.syncImmediately(this);
         }
