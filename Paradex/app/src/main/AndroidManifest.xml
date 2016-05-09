@@ -30,13 +30,11 @@
 
         <activity
             android:name=".DetailActivity"
-            android:theme="@style/Detail"
-            android:parentActivityName=".MainActivity" />
+            android:theme="@style/Detail" />
 
         <activity
             android:label="@string/settings_title"
             android:name=".Activity_Settings"
-            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme" />
 
         <provider

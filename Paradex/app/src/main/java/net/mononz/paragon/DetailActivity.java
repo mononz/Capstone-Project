@@ -174,15 +174,17 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
             case R.id.menu_external:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(mExternal)));
                 return true;
             case R.id.menu_youtube:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(mYouTube)));
                 return true;
-            default:
-                return super.onOptionsItemSelected(item);
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
