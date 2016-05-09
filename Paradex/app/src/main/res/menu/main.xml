@@ -2,9 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:id="@+id/menu_coming_soon"
+        android:icon="@drawable/ic_soon"
+        android:title="@string/coming_soon"
+        app:showAsAction="ifRoom" />
+
     <item android:id="@+id/menu_disclaimer"
         android:icon="@drawable/ic_settings"
         android:title="@string/settings_title"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
 </menu>

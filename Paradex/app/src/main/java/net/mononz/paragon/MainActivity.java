@@ -112,9 +112,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.menu_coming_soon:
+                startActivity(new Intent(MainActivity.this, Activity_Soon.class));
+                return true;
             case R.id.menu_disclaimer:
-                Intent i = new Intent(MainActivity.this, Activity_Settings.class);
-                startActivity(i);
+                startActivity(new Intent(MainActivity.this, Activity_Settings.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

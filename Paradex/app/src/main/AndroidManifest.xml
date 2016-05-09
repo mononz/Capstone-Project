@@ -37,6 +37,11 @@
             android:name=".Activity_Settings"
             android:theme="@style/AppTheme" />
 
+        <activity
+            android:label="@string/coming_soon"
+            android:name=".Activity_Soon"
+            android:theme="@style/AppTheme" />
+
         <provider
             android:authorities="@string/content_authority"
             android:name=".sync.Provider"
