@@ -71,6 +71,15 @@
                 android:resource="@xml/syncadapter" />
         </service>
 
+        <!-- Widget -->
+        <receiver android:name=".widget.HeroWidgetProvider" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/widget_hero_info" />
+        </receiver>
+
         <!-- ANALYTICS -->
         <receiver
             android:name="com.google.android.gms.analytics.AnalyticsReceiver"

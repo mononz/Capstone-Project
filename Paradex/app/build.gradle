@@ -9,10 +9,10 @@ android {
             storePassword 'kVTcnV78DMu6'
         }
         release {
-            keyAlias 'debug'
-            keyPassword 'kVTcnV78DMu6'
-            storeFile file('../.debug.jks')
-            storePassword 'kVTcnV78DMu6'
+            keyAlias 'paradex_uat'
+            keyPassword 'Q3ALSaPDETz1'
+            storeFile file('../paradex_uat.jks')
+            storePassword 'Q3ALSaPDETz1'
         }
     }
 

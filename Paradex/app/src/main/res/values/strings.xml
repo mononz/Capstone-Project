@@ -13,6 +13,9 @@
     <string name="close">Close</string>
     <string name="okay">OK</string>
 
+    <string name="widget_featured">Featured Hero</string>
+
+
     <!-- Settings Page -->
 
     <string name="settings_title">Settings</string>
@@ -71,6 +74,7 @@
     <string name="soon_hero">Heroes</string>
     <string name="soon_hero_1">Tips, Guides, Counters, Strategies</string>
     <string name="soon_hero_2">Statistics (Base + level gains)</string>
+    <string name="soon_hero_3">Sorting / Filtering</string>
 
     <string name="soon_card">Cards</string>
     <string name="soon_card_1">All in game cards listed</string>

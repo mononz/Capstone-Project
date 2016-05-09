@@ -76,6 +76,10 @@
                         style="@style/DetailBody1"
                         android:text="@string/soon_hero_2" />
 
+                    <TextView
+                        style="@style/DetailBody1"
+                        android:text="@string/soon_hero_3" />
+
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
