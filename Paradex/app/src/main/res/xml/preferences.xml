@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/pref_title_option" >
+
+        <Preference
+            android:title="@string/pref_sync"
+            android:summary="@string/pref_sync_summary"
+            android:key="@string/pref_sync_key"
+            android:icon="@null" />
+
+        <Preference
+            android:title="@string/pref_images"
+            android:summary="@string/pref_images_summary"
+            android:key="@string/pref_images_key"
+            android:icon="@null" />
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:title="@string/pref_title_about" >
+
+        <Preference
+            android:title="@string/app_name"
+            android:summary="@string/pref_legal_summary"
+            android:key="@string/pref_legal_key"
+            android:icon="@null" />
+
+        <PreferenceScreen
+            android:title="@string/pref_rate"
+            android:summary="@string/pref_rate_summary"
+            android:icon="@null" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/pref_rate_link" />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:title="@string/pref_development"
+            android:summary="@string/pref_development_summary"
+            android:icon="@null" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/pref_development_link" />
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:title="@string/pref_title_support" >
+
+        <PreferenceScreen
+            android:title="@string/pref_twitter"
+            android:summary="@string/pref_twitter_summary"
+            android:icon="@null" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/pref_twitter_link" />
+        </PreferenceScreen>
+
+        <Preference
+            android:title="@string/pref_email"
+            android:summary="@string/pref_email_summary"
+            android:key="@string/pref_email_key"
+            android:icon="@null" />
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

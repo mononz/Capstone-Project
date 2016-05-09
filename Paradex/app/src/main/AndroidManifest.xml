@@ -33,6 +33,12 @@
             android:theme="@style/Detail"
             android:parentActivityName=".MainActivity" />
 
+        <activity
+            android:label="@string/settings_title"
+            android:name=".Activity_Settings"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme" />
+
         <provider
             android:authorities="@string/content_authority"
             android:name=".sync.Provider"

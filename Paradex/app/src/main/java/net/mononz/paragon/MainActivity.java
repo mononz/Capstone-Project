@@ -3,7 +3,6 @@ package net.mononz.paragon;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -114,21 +113,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_disclaimer:
-                final SpannableString s = new SpannableString(getString(R.string.legal));
-                Linkify.addLinks(s, Linkify.ALL);
-                final AlertDialog d = new AlertDialog.Builder(MainActivity.this)
-                        .setTitle(getString(R.string.menu_main_disclaimer))
-                        .setMessage(s)
-                        .setPositiveButton(getString(R.string.close), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .setCancelable(true)
-                        .create();
-                d.show();
-                ((TextView) d.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+                Intent i = new Intent(MainActivity.this, Activity_Settings.class);
+                startActivity(i);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
