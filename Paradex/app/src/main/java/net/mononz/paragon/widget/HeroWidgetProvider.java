@@ -25,8 +25,10 @@ public class HeroWidgetProvider extends AppWidgetProvider {
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_hero);
 
+            // lets pull out a random row from the hero table
             Cursor cursor = context.getApplicationContext().getContentResolver().query(Database.hero.CONTENT_URI,
-                    new String[]{Database.hero.name, Database.hero.thumb, Database.type.name }, null, null, "RANDOM() LIMIT 1");
+                    new String[]{Database.hero.name, Database.hero.thumb, Database.hero.image, Database.type.name },
+                    null, null, "RANDOM() LIMIT 1");
 
             DatabaseUtils.dumpCursor(cursor);
 
@@ -35,7 +37,9 @@ public class HeroWidgetProvider extends AppWidgetProvider {
                     if (cursor.moveToFirst()) {
                         int idx_name = cursor.getColumnIndex(Database.hero.name);
                         int idx_type = cursor.getColumnIndex(Database.type.name);
-                        int idx_image = cursor.getColumnIndex(Database.hero.thumb);
+                        int idx_image = (Paradex.getRandomBoolean())
+                                ? cursor.getColumnIndex(Database.hero.thumb)
+                                : cursor.getColumnIndex(Database.hero.image);
                         remoteViews.setTextViewText(R.id.name, cursor.getString(idx_name));
                         remoteViews.setTextViewText(R.id.type, cursor.getString(idx_type));
 
@@ -57,4 +61,5 @@ public class HeroWidgetProvider extends AppWidgetProvider {
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
         }
     }
+
 }

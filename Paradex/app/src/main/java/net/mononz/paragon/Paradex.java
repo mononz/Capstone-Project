@@ -16,6 +16,7 @@ import net.mononz.paragon.database.Database;
 import net.mononz.paragon.database.NetworkInterface;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -127,6 +128,11 @@ public class Paradex extends Application {
             threshold_millis = 15 * 60 * 1000; // 15 minutes for debug
         }
         return System.currentTimeMillis() > (lastSyncTime + threshold_millis);
+    }
+
+    public static boolean getRandomBoolean() {
+        Random random = new Random();
+        return random.nextBoolean();
     }
 
 }
