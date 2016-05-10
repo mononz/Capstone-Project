@@ -42,6 +42,7 @@ import java.io.InputStream;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class DetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -130,6 +131,17 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
                 .addTestDevice(getString(R.string.test_device))
                 .build();
         adView.loadAd(adRequest);
+    }
+
+    @OnClick(R.id.fab)
+    public void fab() {
+        if (mExternal != null) {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, mExternal);
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
+        }
     }
 
     @Override
