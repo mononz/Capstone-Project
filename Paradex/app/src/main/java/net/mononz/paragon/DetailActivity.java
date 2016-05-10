@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -16,6 +17,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -131,6 +136,16 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
                 .addTestDevice(getString(R.string.test_device))
                 .build();
         adView.loadAd(adRequest);
+
+
+        // enter and exit transitions for lollipop and above devices
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Transition enterTrans = new Slide(Gravity.END);
+            getWindow().setEnterTransition(enterTrans);
+
+            Transition returnTrans = new Slide(Gravity.END);
+            getWindow().setReturnTransition(returnTrans);
+        }
     }
 
     @OnClick(R.id.fab)

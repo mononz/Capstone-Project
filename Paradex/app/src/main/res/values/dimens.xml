@@ -31,6 +31,9 @@
     <dimen name="progress_bar_padding">10dp</dimen>
     <dimen name="progress_bar_radius">4dp</dimen>
 
+    <dimen name="widget_min_width">120dp</dimen>
+    <dimen name="widget_min_height">60dp</dimen>
+
 
     <!-- Layout Specific -->
 

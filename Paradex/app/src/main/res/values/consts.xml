@@ -3,6 +3,8 @@
 
     <integer name="sync_threshold">5</integer>  <!-- 5 hours -->
 
+    <integer name="widget_refresh">3600000</integer> <!-- 1 hour in milliseconds-->
+
     <integer name="network_time_out">30</integer>
 
 </resources>

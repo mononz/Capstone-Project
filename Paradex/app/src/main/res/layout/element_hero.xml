@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:foreground="?android:attr/selectableItemBackground"
     style="@style/CardViewSemiDark"
-    card_view:contentPadding="0dp" >
+    card_view:contentPadding="@dimen/margin_zero" >
 
     <net.mononz.paragon.library.SquareRelativeLayout
         android:layout_width="wrap_content"
