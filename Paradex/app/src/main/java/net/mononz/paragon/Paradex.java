@@ -3,6 +3,7 @@ package net.mononz.paragon;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.util.Log;
 
 import com.facebook.stetho.Stetho;
@@ -123,9 +124,9 @@ public class Paradex extends Application {
     public boolean timeForSync() {
         SharedPreferences sharedpreferences = getSharedPreferences(SyncPreferences, Context.MODE_PRIVATE);
         long lastSyncTime = sharedpreferences.getLong(LastUpdated, 0);
-        long threshold_millis  = getResources().getInteger(R.integer.sync_threshold) * 60 * 60 * 1000;
+        double threshold_millis  = getResources().getInteger(R.integer.sync_threshold) * 60 * 60 * 1000;
         if (BuildConfig.DEBUG) {
-            threshold_millis = 15 * 60 * 1000; // 15 minutes for debug
+            threshold_millis = 0.25 * 60 * 60 * 1000; // 15 minutes for debug
         }
         return System.currentTimeMillis() > (lastSyncTime + threshold_millis);
     }
@@ -133,6 +134,11 @@ public class Paradex extends Application {
     public static boolean getRandomBoolean() {
         Random random = new Random();
         return random.nextBoolean();
+    }
+
+    public static boolean isNetworkConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
     }
 
 }

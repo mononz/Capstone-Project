@@ -44,6 +44,8 @@ public class AdapterHeroList extends CursorRecAdapter<AdapterHeroList.ShowViewHo
         final String thumb = cursor.getString(idx_thumb);
         final String type = cursor.getString(idx_type);
         final String name = cursor.getString(idx_name);
+        
+        viewHolder.vPortrait.setContentDescription(name);
 
         Glide.with(mContext)
                 .load(Uri.parse(Paradex.ASSET_PATH + thumb))

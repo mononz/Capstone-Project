@@ -1,26 +1,21 @@
 package net.mononz.paragon;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.SpannableString;
-import android.text.method.LinkMovementMethod;
-import android.text.util.Linkify;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -81,8 +76,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         }
         // update database if greater than sync threshold
         if (((Paradex) getApplication()).timeForSync()) {
-            SyncAdapter.initializeSyncAdapter(this);
-            SyncAdapter.syncImmediately(this);
+            if (Paradex.isNetworkConnected(this)) {
+                SyncAdapter.initializeSyncAdapter(this);
+                SyncAdapter.syncImmediately(this);
+            } else {
+                final Snackbar snackBar = Snackbar.make(findViewById(R.id.main_coordinator), getString(R.string.snack_no_internet), Snackbar.LENGTH_LONG);
+                snackBar.show();
+            }
         }
     }
 
